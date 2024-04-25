@@ -22,10 +22,19 @@ const deleteProduct = async (_, { id }) => {
   return id
 }
 
+const getProductsByCategory = async (parent) => {
+  const { id } = parent.dataValues;
+
+  return await service.find({
+    where: { categoryId: id }
+  });
+}
+
 module.exports = {
   getProduct,
   getProducts,
   addProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  getProductsByCategory
 }
